@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medical Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="chat-container">
+
+    <div class="chat-header">
+        <div class="logo">
+            🩺
+        </div>
+        <div>
+            <h2>Medical AI Assistant</h2>
+            <p>Ask your health-related questions</p>
+        </div>
+    </div>
+
+    <div id="chatbox" class="chat-box">
+
+        <div class="bot-message">
+            Hello! I'm your Medical AI Assistant. How can I help you today?
+        </div>
+
+    </div>
+
+    <div class="input-area">
+        <input
+            type="text"
+            id="text"
+            placeholder="Type your medical question..."
+            autocomplete="off"
+        >
+
+        <button id="send">
+            Send
+        </button>
+    </div>
+
+</div>
+
+<script>
+
+$(document).ready(function(){
+
+    $("#send").click(function(){
+
+        let rawText = $("#text").val().trim();
+
+        if(rawText === ""){
+            return;
+        }
+
+        let userHtml =
+        '<div class="user-message">'+rawText+'</div>';
+
+        $("#chatbox").append(userHtml);
+
+        $("#text").val("");
+
+        $("#chatbox").append(
+            '<div id="typing" class="bot-message">Typing...</div>'
+        );
+
+        $("#chatbox").scrollTop(
+            $("#chatbox")[0].scrollHeight
+        );
+
+        $.ajax({
+            data: {
+                msg: rawText,
+            },
+            type: "POST",
+            url: "/get",
+        }).done(function(data) {
+
+            $("#typing").remove();
+
+            let botHtml =
+            '<div class="bot-message">'+data+'</div>';
+
+            $("#chatbox").append(botHtml);
+
+            $("#chatbox").scrollTop(
+                $("#chatbox")[0].scrollHeight
+            );
+        });
+    });
+
+    $("#text").keypress(function(e){
+        if(e.which == 13){
+            $("#send").click();
+        }
+    });
+
+});
+
+</script>
+
+</body>
+</html>

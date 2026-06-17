@@ -11,12 +11,25 @@
 
 >pip install -r requirements.txt
 
-**Create a '.env' file in the root directory and add your pincone credentials as follows:**
+**Step 3-Create a '.env' file in the root directory and add your pincone credentials as follows:**
 
->>PINECONE_API_KEY="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+>PINECONE_API_KEY="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
-**Download the quantize model from the link provided in model folder & keep the model in the model directory:**
+**Step 4-Download the quantize model from the link provided in model folder & keep the model in the model directory:**
 
->>llama-2-7b-chat.ggmlv3.q4_0.bin
+>llama-2-7b-chat.ggmlv3.q4_0.bin
 *From:*
->>https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGML/blob/main/llama-2-7b-chat.ggmlv3.q4_0.bin
+>https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGML/blob/main/llama-2-7b-chat.ggmlv3.q4_0.bin
+
+**Step 5-Store the vectors**
+>python store_index.py
+
+**Step 6-Run the app**
+>python app.py
+
+**TECHSTACK USED:**
+*Python*
+*LangChain*
+*Flask*
+*Meta Llama2*
+*Pinecone*
