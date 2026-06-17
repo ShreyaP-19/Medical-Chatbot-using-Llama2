@@ -28,8 +28,8 @@
 >python app.py
 
 **TECHSTACK USED:**
-*Python*
-*LangChain*
-*Flask*
-*Meta Llama2*
-*Pinecone*
+*Python* | 
+*LangChain* | 
+*Flask* | 
+*Meta Llama2* | 
+*Pinecone* | 
