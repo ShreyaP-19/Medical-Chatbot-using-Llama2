@@ -5,6 +5,7 @@
 **Step 1-Create a conda environment after opening the repository**
 
 >conda create -n mchatbot python=3.8 -y
+
 >conda activate mchatbot
 
 **Step 2-Install the requirements**
